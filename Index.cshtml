@@ -1,0 +1,36 @@
+    <div class="col-4 col-md-3 col-lg-2">
+        <label class="form-label">Integer with sign</label>
+        <div class="input-group">
+            <input type="text" placeholder="@Patterns.DecimalPlaceHolder(4,true)" pattern="@Patterns.Integer(true)" class="form-control text-end" required />
+        </div>
+    </div>
+    <div class="col-4 col-md-3 col-lg-2">
+        <label class="form-label">Integer without sign</label>
+        <div class="input-group">
+            <input type="text" placeholder="@Patterns.DecimalPlaceHolder(4, false)" pattern="@Patterns.Integer(false)" class="form-control text-end" required />
+        </div>
+    </div>
+    <div class="col-4 col-md-3 col-lg-2">
+        <label class="form-label">decimal with sign</label>
+        <div class="input-group">
+            <input type="text" placeholder="@Patterns.DecimalPlaceHolder(4, true)" pattern="@Patterns.Decimal(4, true)" class="form-control text-end" required />
+        </div>
+    </div>
+    <div class="col-4 col-md-3 col-lg-2">
+        <label class="form-label">decimal without sign</label>
+        <div class="input-group">
+            <input type="text" placeholder="@Patterns.DecimalPlaceHolder(4, false)" pattern="@Patterns.Decimal(4, false)" class="form-control text-end" required />
+        </div>
+    </div>
+    <div class="col-4 col-md-3 col-lg-2">
+        <label class="form-label">date</label>
+        <div class="input-group">
+            <input type="text" placeholder="@Patterns.DatePlaceHolder()" pattern="@Patterns.Date()" class="form-control text-end" required />
+        </div>
+    </div>
+    <div class="col-4 col-md-3 col-lg-2">
+        <label class="form-label">password</label>
+        <div class="input-group">
+            <input type="password" pattern="@Patterns.Password(8)" class="form-control text-end" required />
+        </div>
+    </div>
