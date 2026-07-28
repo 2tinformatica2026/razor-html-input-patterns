@@ -1,9 +1,20 @@
 using Microsoft.AspNetCore.Html;
 
-namespace [Application Name].Models
+namespace 2tinformatica.Models
 {
     public class Patterns
     {
+        public static string EscapeJs(string value)
+        {
+            if (string.IsNullOrEmpty(value)) return value;
+            return value
+                .Replace("\\", "\\\\")
+                .Replace("\"", "\\\"")
+                .Replace("'", "\\'")
+                .Replace("\r", "\\r")
+                .Replace("\n", "\\n")
+                .Replace("\t", "\\t");
+        }
         public static HtmlString Password(int MinLength = 8)
         {
             string Pattern = "(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^\\da-zA-Z])(?!.*\\s).{" + MinLength.ToString() + ",}";
@@ -51,12 +62,14 @@ namespace [Application Name].Models
         {
           return  new HtmlString(ShortDatePattern.ToLower());   
         }
-        public static HtmlString Integer(bool signed)
+        public static HtmlString Integer(bool signed, bool ZeroExcluded = false)
         {
-           if (signed) return new HtmlString("^[+-]?\\d+$");
-           return new HtmlString("^\\d+$");
+            string ze = string.Empty;
+            if (ZeroExcluded) ze = "[1-9]";
+            if (signed) return new HtmlString("^[+-]?" + ze + "\\d*$");
+            return new HtmlString("^" + ze + "\\d*$");
         }
-        public static HtmlString IntegerPlaceHolder() { return new HtmlString("12345"); }
+        public static HtmlString IntegerPlaceHolder(bool ZeroExcluded = false) { return new HtmlString(ZeroExcluded==true? "12345..": "01234.."); }
         public static HtmlString Decimal(int NumberOfDecimal, bool signed)
         {
            return Decimal(System.Globalization.CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator, NumberOfDecimal, signed);
